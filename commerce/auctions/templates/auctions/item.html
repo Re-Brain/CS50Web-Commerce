@@ -1,0 +1,93 @@
+{% extends "auctions/layout.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'auctions/item.css' %}">
+{% endblock %}
+
+{% block body %}
+<h3>Listing: {{ item.title }}</h3>
+<main class="item">
+    {% include 'auctions/message.html' %}
+    <div class="item-container">
+        <div class="item-container-image">
+            <img src="{{ item.image }}" alt="Picture of {{ item.title }}">
+        </div>
+        <div class="item-container-data">
+            <h3>{{ item.description }}</h3>
+            <h3>$ {{ price }}</h3>
+            <p>{{bids}} bid(s) so far. {% if user_bid %}Your bid is the current bid.{% endif %}</p>
+            {% if highest_bidder.user == user and not item.is_active %}
+            <h3>You are the winner!!!</h3>
+            {% endif %}
+
+            {% if item.is_active %}
+                <form action="{% url 'place_bid' %}" method="POST" id="price">
+                    {% csrf_token %}
+                    <input type="number" name="bid">
+                    <input type="hidden" name="item" value="{{item.title}}">
+                    <input type="submit" value="Place Bid">
+                </form>
+            {% endif %}
+            {% if item.is_active %}
+                <div class="container-data-feature">
+                    {% if user_watchlist %}
+                    <form action="{% url 'remove_watchlist' %}" method="POST" class="watchlist">
+                        {% csrf_token %}
+                        <input type="hidden" name="item" value="{{item.title}}">
+                        <input type="submit" value="Remove from WatchList">
+                    </form>
+                    {% else %}
+                    <form action="{% url 'add_watchlist' %}" method="POST" class="watchlist">
+                        {% csrf_token %}
+                        <input type="hidden" name="item" value="{{item.title}}">
+                        <input type="submit" value="WatchList">
+                    </form>
+                    {% endif %}
+                    {% if item.is_active and user == item.user %}
+                    <form action="{% url 'unactive_item' %}" method="POST" id="auction_owner">
+                        {% csrf_token %}
+                        <input type="hidden" name="item" value="{{item.title}}">
+                        <input type="submit" value="Close Auction">
+                    </form>
+                    {% endif %}
+                </div>
+            {% endif %}
+                
+            <div id="detail">
+                <h3>Details:</h3>
+                <ul>
+                    <li>Listed by {{ item.user }}</li>
+                    <li>Category: {{ item.category }}</li>
+                    <li>Date Created: {{ item.date }}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <section id="comment">
+        <h3>Comments</h3>
+        {% if item.is_active %}
+        <form action="{% url 'create_comment' %}" method="POST" id="create_comment">
+            {% csrf_token %}
+            <input type="hidden" name="item" value="{{ item }}">
+            <textarea name="comment" cols="30" rows="10" required></textarea>
+            <input type="submit">
+        </form>
+        {% endif %}
+
+        <div class="generate_comment">
+            {% if comments %}
+                {% for comment in comments %}
+                    <div class="generate_comment_data">
+                        <p class="comment_user">{{ comment.user.username }}</p>
+                        <p class="comment_text">{{ comment.comment }}</p>
+                    </div>
+                {% endfor%}
+            {% else %}
+                <h3>No Comments Yet</h3>
+            {% endif%}
+        </div>
+    </section>
+</main>
+{% endblock %}
