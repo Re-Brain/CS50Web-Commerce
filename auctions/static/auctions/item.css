@@ -1,0 +1,157 @@
+.item
+{
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-self: center;
+    padding: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.item-container
+{
+    display: grid;
+    grid-template-columns: 40% 60%;
+    grid-gap: 15px;
+    width: 80%;  
+    height: 50vh;  
+}
+
+.item-container-image
+{
+    border: 1px solid black;
+    border-radius: 10px;
+    width: 460px;
+    height: 375px; 
+}
+
+.item-container-image > img
+{
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+    border-radius: 10px;
+}
+
+.item-container-data
+{
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+#price
+{
+    margin-bottom: 10px;
+}
+#price > input[type="number"]
+{
+    width: 70%; 
+    height: 40px; 
+    padding: 10px; 
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+#price > input[type="submit"]
+{
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 7px; 
+}
+
+.container-data-feature
+{
+    display: flex;
+    flex-direction: row;
+}
+
+.watchlist
+{
+    margin-right: 5px;
+}
+
+.watchlist > input[type="submit"], #auction_owner > input[type="submit"]
+{
+    border-radius: 10px;
+    border: 1px solid black;
+    padding: 5px;
+}
+
+#detail > ul
+{
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+#comment
+{
+    margin-top: 20px;
+    height: 100%;
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-self: center;
+}
+
+#create_comment
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    grid-gap: 10px;
+    width: 80%;
+}
+
+#create_comment > textarea
+{
+    height: 70px;
+    width: 70%;
+    resize: none;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.generate_comment
+{
+    width: 80%;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.generate_comment_data
+{
+    margin-bottom: 20px;
+    border: 1px solid black;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: 20% 80%;
+}
+
+.generate_comment_data > .comment_user
+{
+    border-right: 1px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    margin: 0;
+}
+
+.generate_comment_data > .comment_text
+{
+    height: 100%;
+    margin: 0;
+    word-wrap: break-word;
+    padding: 10px;
+}
