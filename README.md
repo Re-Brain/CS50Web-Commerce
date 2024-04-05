@@ -1,6 +1,6 @@
 # Project 2 - Commerce
 
-This is my third project in my CS50’s Web Programming with Python and JavaScript course that I taken. In this project, I have to design an eBay-like e-commerce auction site that will allow users to post auction listings, place blids on listings, comment on thos lestings, and add listings to a "watchlist."
+&nbsp;&nbsp;&nbsp;&nbsp;This is my third project in my CS50’s Web Programming with Python and JavaScript course that I taken. In this project, I have to design an eBay-like e-commerce auction site that will allow users to post auction listings, place blids on listings, comment on thos lestings, and add listings to a "watchlist."
 
 ## Specification
 
