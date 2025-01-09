@@ -1,3 +1,18 @@
+.title
+{
+    color: #2C3E50; /* Dark navy blue */
+    font-weight: bold;
+    margin-top: 20px;
+    margin-left : 40px;
+    margin-bottom: 40px;
+}
+
+.title_comment
+{
+    color: #2C3E50; /* Dark navy blue */
+    font-weight: bold;
+}
+
 .item
 {
     width: 100%;
@@ -38,6 +53,8 @@
 
 .item-container-data
 {
+    background-color: #2C3E50; /* Dark navy blue */
+    color: #ECF0F1; 
     padding: 10px;
     border: 1px solid black;
     border-radius: 10px;
@@ -50,8 +67,11 @@
 {
     margin-bottom: 10px;
 }
+
 #price > input[type="number"]
 {
+    background-color: #F8F9FA; /* Light grayish-white */
+    color: #2C3E50; /* Dark navy blue */
     width: 70%; 
     height: 40px; 
     padding: 10px; 
@@ -59,8 +79,16 @@
     border-radius: 10px;
 }
 
+#price > input[type="number"]::-webkit-inner-spin-button,
+#price > input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 #price > input[type="submit"]
 {
+    background-color: #F8F9FA; /* Light grayish-white */
+    color: #2C3E50; /* Dark navy blue */
     border: 1px solid black;
     border-radius: 10px;
     padding: 7px; 
@@ -91,9 +119,14 @@
     list-style-type: none;
 }
 
+#detail > h3
+{
+    margin-top: 10px;
+}
+
 #comment
 {
-    margin-top: 20px;
+    margin-top: 50px;
     height: 100%;
     width: 70%;
     display: flex;
@@ -114,12 +147,23 @@
 
 #create_comment > textarea
 {
-    height: 70px;
+    background-color: #F8F9FA; /* Light grayish-white */
+    color: #2C3E50; /* Dark navy blue */
+    height: 50px;
     width: 70%;
     resize: none;
     border: 1px solid black;
     border-radius: 10px;
     padding: 10px;
+}
+
+#create_comment > input[type="submit"]
+{
+    background-color: #2C3E50; /* Light grayish-white */
+    color: #F8F9FA; /* Dark navy blue */
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 7px;
 }
 
 .generate_comment
@@ -131,6 +175,8 @@
 
 .generate_comment_data
 {
+    background-color: #2C3E50; /* Light grayish-white */
+    color: #F8F9FA; /* Dark navy blue */
     margin-bottom: 20px;
     border: 1px solid black;
     border-radius: 10px;
@@ -140,7 +186,6 @@
 
 .generate_comment_data > .comment_user
 {
-    border-right: 1px solid black;
     display: flex;
     align-items: center;
     justify-content: center;

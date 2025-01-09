@@ -6,9 +6,11 @@
 {% endblock %}
 
 {% block body %}
-<h3>Listing: {{ item.title }}</h3>
+<h3 class="title">Listing: {{ item.title }}</h3>
 <main class="item">
+
     {% include 'auctions/message.html' %}
+
     <div class="item-container">
         <div class="item-container-image">
             <img src="{{ item.image }}" alt="Picture of {{ item.title }}">
@@ -16,7 +18,7 @@
         <div class="item-container-data">
             <h3>{{ item.description }}</h3>
             <h3>$ {{ price }}</h3>
-            <p>{{bids}} bid(s) so far. {% if user_bid %}Your bid is the current bid.{% endif %}</p>
+            <p>{{bids}} bid(s) so far. {% if user_bid %}Your bid is the highest bid.{% endif %}</p>
             {% if highest_bidder.user == user and not item.is_active %}
             <h3>You are the winner!!!</h3>
             {% endif %}
@@ -24,7 +26,7 @@
             {% if item.is_active %}
                 <form action="{% url 'place_bid' %}" method="POST" id="price">
                     {% csrf_token %}
-                    <input type="number" name="bid">
+                    <input type="number" name="bid" required>
                     <input type="hidden" name="item" value="{{item.title}}">
                     <input type="submit" value="Place Bid">
                 </form>
@@ -66,7 +68,7 @@
     </div>
 
     <section id="comment">
-        <h3>Comments</h3>
+        <h3 class="title_comment" >Comments</h3>
         {% if item.is_active %}
         <form action="{% url 'create_comment' %}" method="POST" id="create_comment">
             {% csrf_token %}
@@ -85,7 +87,7 @@
                     </div>
                 {% endfor%}
             {% else %}
-                <h3>No Comments Yet</h3>
+                <h3 class="title_comment" >No Comments Yet</h3>
             {% endif%}
         </div>
     </section>

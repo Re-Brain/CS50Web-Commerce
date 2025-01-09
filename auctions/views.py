@@ -162,7 +162,7 @@ def add_category(request):
     return HttpResponseRedirect(reverse("create"))
 
 ############ Item Display #############
-def item(request, item):
+def get_item(request, item):
 
     list = Item.objects.get(title=item)
     bids = Price.objects.filter(item__title=item).count()
@@ -186,6 +186,8 @@ def item(request, item):
                                                   "active": active,
                                                   "comments": comments})
 
+def handle_get_empty_item(request):
+    return HttpResponseRedirect(reverse("index"))
 
 @login_required
 def place_bid(request):
@@ -195,13 +197,13 @@ def place_bid(request):
         bid_price = Decimal(request.POST["bid"])
         if bid_price >= current_highest_price:
             Price.objects.create(user=request.user, item=item, price=bid_price)
-            return HttpResponseRedirect(reverse("item", args=(item.title,)))
+            return HttpResponseRedirect(reverse("get_item", args=(item.title,)))
         else:
             messages.error(request, "Your bet is too low. Please bet higher")
-            return HttpResponseRedirect(reverse("item", args=(item.title,)))
+            return HttpResponseRedirect(reverse("get_item", args=(item.title,)))
 
     item = Item.objects.get(title=request.GET["item"])
-    return HttpResponseRedirect(reverse("item", args=(item.title,)))
+    return HttpResponseRedirect(reverse("get_item", args=(item.title,)))
 
 
 def unactive_item(request):
@@ -223,23 +225,22 @@ def comment(request):
         user = request.user
 
         Comment.objects.create(item=item, comment=comment, user=user)
-        return HttpResponseRedirect(reverse("item", args=(item.title,)))
+        return HttpResponseRedirect(reverse("get_item", args=(item.title,)))
 
     item = Item.objects.get(title=request.GET["item"])
-    return HttpResponseRedirect(reverse("item", args=(item.title,)))
+    return HttpResponseRedirect(reverse("get_item", args=(item.title,)))
 
 ############ Watchlist #############
-
 
 @login_required
 def add_watchlist(request):
     if request.method == "POST":
         item = Item.objects.get(title=request.POST["item"])
         Watchlist.objects.create(item=item, user=request.user)
-        return HttpResponseRedirect(reverse("item", args=(item.title,)))
+        return HttpResponseRedirect(reverse("get_item", args=(item.title,)))
 
     item = Item.objects.get(title=request.GET["item"])
-    return HttpResponseRedirect(reverse("item", args=(item.title,)))
+    return HttpResponseRedirect(reverse("get_item", args=(item.title,)))
 
 
 @login_required
@@ -247,10 +248,10 @@ def remove_watchlist(request):
     if request.method == "POST":
         item = Item.objects.get(title=request.POST["item"])
         Watchlist.objects.get(item=item, user=request.user).delete()
-        return HttpResponseRedirect(reverse("item", args=(item.title,)))
+        return HttpResponseRedirect(reverse("get_item", args=(item.title,)))
 
     item = Item.objects.get(title=request.GET["item"])
-    return HttpResponseRedirect(reverse("item", args=(item.title,)))
+    return HttpResponseRedirect(reverse("get_item", args=(item.title,)))
 
 
 @login_required

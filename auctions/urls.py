@@ -16,6 +16,7 @@ urlpatterns = [
     path("unactive_item", views.unactive_item , name="unactive_item"),
     path("comment" , views.comment , name="create_comment"),
     path("add_category" , views.add_category, name="add_category"),
-    path("<str:item>/" , views.item , name="item"),
+    path("item/<str:item>" , views.get_item , name="get_item"),
+    path("item/", views.handle_get_empty_item, name="handle_get_empty_item")
 ]
  

@@ -1,14 +1,19 @@
 {% extends "auctions/layout.html" %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'auctions/authenticated.css' %}">
+{% endblock %}
 
 {% block body %}
 
-    <h2>Login</h2>
+    <h2 class="title">Login</h2>
 
     {% if message %}
         <div>{{ message }}</div>
     {% endif %}
 
-    <form action="{% url 'login' %}" method="post">
+    <form class="form" action="{% url 'login' %}" method="post">
         {% csrf_token %}
         <div class="form-group">
             <input autofocus class="form-control" type="text" name="username" placeholder="Username">
@@ -19,6 +24,6 @@
         <input class="btn btn-primary" type="submit" value="Login">
     </form>
 
-    Don't have an account? <a href="{% url 'register' %}">Register here.</a>
+    <p class="alternate_page" >Don't have an account? <a href="{% url 'register' %}">Register here.</a></p>
 
 {% endblock %}

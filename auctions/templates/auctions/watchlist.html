@@ -12,7 +12,7 @@
     <section class="list">
         {% for list in lists %}
             <div class="list-item">
-                <a href="{% url 'item' item=list.0.title %}" class="list-item-link">
+                <a href="{% url 'get_item' item=list.0.title %}" class="list-item-link">
                     <div class="item-image">
                         {% if list.0.image %}
                         <img src="{{ list.0.image }}" alt="Display Image">
@@ -21,17 +21,17 @@
                         {% endif %}
                     </div>
                     <div class="item-description">
-                        <p>{{ list.0.title }}</p>
-                        <p>{{ list.1 }}</p>
-                        <p>{{ list.0.date }}</p>
-                        <p>{{ list.0.description }}</p>
+                        <p>Item : {{ list.0.title }}</p>
+                        <p>Price : ${{ list.1 }}</p>
+                        <p>Date Created : {{ list.0.date }}</p>
+                        <p>Description : {{ list.0.description }}</p>
                     </div>
                 </a>
             </div>
         {% endfor %}
     </section>
     {% else %}
-        <h3>Currently has no item</h3>
+        <h3 class="message">You currently don't list any item</h3>
     {% endif %}
 </main>
 

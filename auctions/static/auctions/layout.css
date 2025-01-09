@@ -1,0 +1,50 @@
+body {
+    font-family: "Roboto", sans-serif;
+    background-color: #F8F9FA; /* Light grayish-white */
+}
+
+h1 
+{
+    text-align: center;
+    font-weight: bold;
+    padding-top: 1rem;
+}
+
+#nav_bar
+{
+    background-color: #2C3E50; /* Dark navy blue */
+    color: #ECF0F1;          
+}
+
+.nav
+{
+    justify-content: center;
+}
+
+.nav-item
+{
+    padding: 10px;
+}
+
+.nav-link
+{
+    background-color: #ECF0F1; /* Off-white buttons */
+    color: #2C3E50;           /* Dark navy blue text */
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.nav-link li:hover {
+    background-color: #3498DB; /* Light blue hover effect */
+    color: #FFFFFF;
+}
+
+#user_authenticated
+{
+    text-align: right;
+    font-size: 20px;
+    padding-right: 1rem;
+}
+

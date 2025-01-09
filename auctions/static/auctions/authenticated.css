@@ -1,0 +1,46 @@
+.title
+{
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    color: #2C3E50;
+    font-weight: bold;
+    text-align: center;
+}
+
+.form
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-group
+{
+    width: 30%;
+}
+
+.form-group > input
+{
+    background-color: #F8F9FA; /* Light grayish-white */
+    color: #2C3E50; /* Dark navy blue */
+}
+
+.form-group > input::placeholder
+{
+    color: #2C3E50; /* Dark navy blue */
+}
+
+.form > input[type="submit"]
+{
+    background-color: #2C3E50; /* Light grayish-white */
+    color: #F8F9FA; /* Dark navy blue */
+}
+
+.alternate_page
+{
+    margin-top: 20px;
+    text-align: center;
+    color: #2C3E50; /* Dark navy blue */
+}
