@@ -19,8 +19,12 @@
             <h3>{{ item.description }}</h3>
             <h3>$ {{ price }}</h3>
             <p>{{bids}} bid(s) so far. {% if user_bid %}Your bid is the highest bid.{% endif %}</p>
-            {% if highest_bidder.user == user and not item.is_active %}
-            <h3>You are the winner!!!</h3>
+            {% if not item.is_active %}
+                {% if highest_bidder.user == user%}
+                    <h3>You are the winner!!!</h3>
+                {% else %}
+                    <h3>You are not the winner</h3>
+                {% endif %}            
             {% endif %}
 
             {% if item.is_active %}
